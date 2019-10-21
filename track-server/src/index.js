@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
 const PORT = process.env.PORT || 3000;
 const keys = require("../env");
 const app = express();
@@ -10,6 +11,7 @@ mongoose.connect(keys.MONGOURI, {
   useCreateIndex: true
 });
 
+app.use(bodyParser.json());
 app.use(authRoutes);
 
 mongoose.connection.on("connected", () => {
