@@ -1,9 +1,24 @@
-const express = require('express');
-
+const express = require("express");
+const mongoose = require("mongoose");
+const PORT = process.env.PORT || 3000;
+const keys = require("../env");
 const app = express();
 
-app.get('/', (req, res) => {
-  res.send('hi there');
+mongoose.connect(keys.MONGOURI, {
+  useNewUrlParser: true,
+  useCreateIndex: true
 });
 
-app.listen(3000, () => console.log('Listening on port 3000'));
+app.get("/", (req, res) => {
+  res.send("hi there");
+});
+
+mongoose.connection.on("connected", () => {
+  console.log("Connected to mongo instance");
+});
+
+mongoose.connection.on("error", err => {
+  console.error("Error connecting to mongo", err);
+});
+
+app.listen(PORT, () => console.log("Server started on", PORT));
