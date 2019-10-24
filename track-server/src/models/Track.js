@@ -1,13 +1,13 @@
 const mongoose = require('mongoose');
 
 const PointSchema = new mongoose.Schema({
-  timestamps: Number,
+  timestamp: Number,
   coords: {
     latitude: Number,
     longitude: Number,
     altitude: Number,
     accuracy: Number,
-    HTMLHeadingElement: Number,
+    heading: Number,
     speed: Number
   }
 });
