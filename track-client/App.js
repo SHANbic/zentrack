@@ -18,7 +18,7 @@ const switchNavigator = createSwitchNavigator({
   }),
   mainFlow: createBottomTabNavigator({
     trackListFlow: createStackNavigator({
-      Tracklist: TrackListScreen,
+      TrackList: TrackListScreen,
       TrackDetail: TrackDetailScreen
     }),
     TrackCreate: TrackCreateScreen,

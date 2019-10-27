@@ -30,9 +30,9 @@ const SignupScreen = ({ navigation }) => {
         autoCorrect={false}
         secureTextEntry
       />
-      {state.errorMessage && (
+      {state.errorMessage ? (
         <Text style={styles.error}>{state.errorMessage}</Text>
-      )}
+      ) : null}
       <Spacer>
         <Button title="Sign Up" onPress={() => signUp({ email, password })} />
       </Spacer>

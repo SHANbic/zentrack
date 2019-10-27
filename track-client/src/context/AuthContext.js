@@ -18,18 +18,18 @@ const signIn = dispatch => {
   };
 };
 
-const signUp = dispatch => {
-  return async ({ email, password }) => {
-    try {
-      const response = await trackerApi.post('/signup', { email, password });
-      console.log(response.data);
-    } catch (err) {
-      dispatch({
-        type: 'add_error',
-        payload: 'Something went wrong with sign up'
-      });
-    }
-  };
+const signUp = dispatch => async ({ email, password }) => {
+  try {
+    const response = await trackerApi.post('/signup', { email, password });
+    await AsyncStorage.setItem('token', response.data.token);
+    dispatch({ type: 'signup', payload: response.data.token });
+    navigate('TrackList');
+  } catch (err) {
+    dispatch({
+      type: 'add_error',
+      payload: 'Something went wrong with sign up'
+    });
+  }
 };
 
 const signOut = dispatch => {
@@ -41,5 +41,5 @@ const signOut = dispatch => {
 export const { Provider, Context } = createDataContext(
   authReducer,
   { signIn, signOut, signUp },
-  { isSignedIn: false }
+  { token: null, errorMessage: '' }
 );
