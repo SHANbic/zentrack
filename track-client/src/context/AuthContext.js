@@ -1,10 +1,14 @@
+import { AsyncStorage } from 'react-native';
 import createDataContext from './createDataContext';
 import trackerApi from '../api/tracker';
+import { navigate } from '../navigationRef';
 
 const authReducer = (state, action) => {
   switch (action.type) {
     case 'add_error':
       return { ...state, errorMessage: action.payload };
+    case 'signup':
+      return { errorMessage: '', token: action.payload };
     default:
       return state;
   }

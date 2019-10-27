@@ -1,4 +1,5 @@
 import React from 'react';
+import { setNavigator } from './src/navigationRef';
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
@@ -31,7 +32,11 @@ const App = createAppContainer(switchNavigator);
 export default () => {
   return (
     <AuthProvider>
-      <App />
+      <App
+        ref={navigator => {
+          setNavigator(navigator);
+        }}
+      />
     </AuthProvider>
   );
 };
