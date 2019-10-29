@@ -10,7 +10,7 @@ const SigninScreen = () => {
   return (
     <View style={styles.container}>
       <AuthForm
-        headerText="Sign In for Tracker"
+        headerText="Welcome back to Tracker"
         errorMessage={state.errorMessage}
         submitButtonText="Sign In"
         onSubmit={signIn}
