@@ -1,14 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet } from 'react-native';
 import { Text } from 'react-native-elements';
 import { SafeAreaView } from 'react-navigation';
 import Map from '../components/Map';
+import { requestPermissionsAsync } from 'expo-location';
 
 const TrackCreateScreen = () => {
+  const [err, setErr] = useState(null);
+  const startWatching = async () => {
+    try {
+      await requestPermissionsAsync();
+    } catch (err) {
+      setErr(err);
+    }
+  };
+
+  useEffect(() => {
+    startWatching();
+  }, []);
+
   return (
     <SafeAreaView forceInset={{ top: 'always' }} style={{ fontSize: 48 }}>
       <Text h2>Create a track</Text>
       <Map />
+      {err ? <Text>You must accept geo location</Text> : null}
     </SafeAreaView>
   );
 };
