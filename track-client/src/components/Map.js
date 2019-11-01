@@ -6,8 +6,8 @@ const Map = () => {
   let points = [];
   for (let i = 0; i < 20; i++) {
     points.push({
-      latitude: 48.6095004 + i * 0.5,
-      longitude: 2.4782058 + i * -0.8
+      latitude: 48.6095004 + i * 0.1,
+      longitude: 2.4782058 + i * 0.1
     });
   }
   return (
