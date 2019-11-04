@@ -14,7 +14,7 @@ export default (shouldTrack, callback) => {
     const startWatching = async () => {
       try {
         await requestPermissionsAsync();
-        subcriber = await watchPositionAsync(
+        subscriber = await watchPositionAsync(
           {
             accuracy: Accuracy.BestForNavigation,
             distanceInterval: 10,
@@ -33,7 +33,7 @@ export default (shouldTrack, callback) => {
       if (subscriber) {
         subscriber.remove();
       }
-      subcriber = null;
+      subscriber = null;
     }
 
     return () => {

@@ -11,7 +11,7 @@ const TrackForm = () => {
     changeName
   } = useContext(LocationContext);
 
-  console.log(locations.length); // todo : should stop !!!
+  console.log(locations.length);
   return (
     <>
       <Spacer>
